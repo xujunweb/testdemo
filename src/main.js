@@ -13,8 +13,9 @@ Vue.config.productionTip = false
 filter.install(Vue)
 //全局注册应用配置
 Vue.prototype.$config = config
-new Vue({
-  router,
-  store,
-  render: h => h(App)
+window.app = new Vue({
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app')
+

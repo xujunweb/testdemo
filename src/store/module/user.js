@@ -12,10 +12,14 @@ export default {
   getters: {
     getUserLoginInfo (state) {
       return state
-    }
+    },
+      getUserName(state) {
+        return state.userName
+      }
   },
   mutations: {
     setAvator (state, avatorPath) {
+      //写业务
       state.avatorImgPath = avatorPath
     },
     setUserId (state, id) {

@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <slot name="dd"></slot>
     <h1>{{ msg }}</h1>
     <p>
       For guide and recipes on how to configure / customize this project,<br>
@@ -20,12 +21,15 @@
     <div>
       头像:{{userInfor.avatorImgPath}};
     </div>
-    <slot></slot>
+    <div>num---------:{{num}}</div>
+    <Button @click="gettouxiang('cccccccccccccccccc')">更新头像</Button>
+    <slot name="ad"></slot>
+    <Input v-model="add" style="width: 300px;"></Input>
   </div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters,mapMutations,mapState,mapActions} from 'vuex'
 export default {
   name: 'HelloWorld',
   props: {
@@ -36,13 +40,33 @@ export default {
       }
     }
   },
+  data(){
+      return{
+          add:1
+      }
+  },
   computed: {
+      num(){
+          //dosomting
+          return this.add +1
+      },
     ...mapGetters({
         'userInfor':'getUserLoginInfo',
     })
   },
-  methods:{
+    created(){
 
+    },
+    mounted(){
+
+    },
+  methods:{
+      ...mapMutations({
+          'gettouxiang':'setAvator'
+      }),
+    getadd(){
+      this.$emit('dddfdsf',{})
+    }
   }
 }
 </script>
