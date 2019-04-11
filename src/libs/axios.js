@@ -14,7 +14,7 @@ class HttpRequest {
       headers: {
         // 'Access-Control-Allow-Origin': '*',
         // 'Content-Type': 'application/json'
-      },
+      }
     }
     return config
   }

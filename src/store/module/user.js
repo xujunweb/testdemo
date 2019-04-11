@@ -13,13 +13,13 @@ export default {
     getUserLoginInfo (state) {
       return state
     },
-      getUserName(state) {
-        return state.userName
-      }
+    getUserName (state) {
+      return state.userName
+    }
   },
   mutations: {
     setAvator (state, avatorPath) {
-      //写业务
+      // 写业务
       state.avatorImgPath = avatorPath
     },
     setUserId (state, id) {
@@ -38,7 +38,7 @@ export default {
   },
   actions: {
     // 登录
-    handleLogin ({ commit }, {userName, password}) {
+    handleLogin ({ commit }, { userName, password }) {
       userName = userName.trim()
       return new Promise((resolve, reject) => {
         login({

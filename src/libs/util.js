@@ -6,7 +6,7 @@ import { forEach, hasOneOf, objEqual } from '@/libs/tools'
 export const TOKEN_KEY = 'token'
 
 export const setToken = (token) => {
-  Cookies.set(TOKEN_KEY, token, {expires: config.cookieExpires || 1})
+  Cookies.set(TOKEN_KEY, token, { expires: config.cookieExpires || 1 })
 }
 
 export const getToken = () => {
@@ -271,7 +271,6 @@ export const findNodeDownward = (ele, tag) => {
 export const showByAccess = (access, canViewAccess) => {
   return hasOneOf(canViewAccess, access)
 }
-
 
 /**
  * @description 根据name/params/query判断两个路由对象是否相等

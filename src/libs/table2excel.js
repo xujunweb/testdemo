@@ -86,7 +86,7 @@ let tableToExcel = (function () {
     return s.replace(/{(\w+)}/g, function (m, p) { return c[p] })
   }
   return function (table, aId, name) {
-    let ctx = {worksheet: name || 'Worksheet', table: table}
+    let ctx = { worksheet: name || 'Worksheet', table: table }
     document.getElementById(aId).href = uri + base64(format(template, ctx))
     document.getElementById(aId).download = name
     document.getElementById(aId).click()

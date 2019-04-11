@@ -14,7 +14,7 @@ const router = new Router({
 })
 router.beforeEach((to, from, next) => {
   iView.LoadingBar.start()
-    next() // 跳转
+  next() // 跳转
   // 路由拦截(跳转之前)
 })
 

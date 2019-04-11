@@ -1,29 +1,92 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <q-layout id="q-app" view="lHh Lpr lFf">
+    <q-layout-header>
+      <q-toolbar
+        color="primary"
+        :glossy="$q.theme === 'mat'"
+        :inverted="$q.theme === 'ios'"
+      >
+        <q-btn
+          flat
+          dense
+          round
+          @click="leftDrawerOpen = !leftDrawerOpen"
+          aria-label="Menu"
+          icon="menu"
+        />
+
+        <q-toolbar-title>
+          Quasar App
+          <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
+        </q-toolbar-title>
+      </q-toolbar>
+    </q-layout-header>
+
+    <q-layout-drawer
+      v-model="leftDrawerOpen"
+      :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null"
+    >
+      <q-list
+        no-border
+        link
+        inset-delimiter
+      >
+        <q-list no-border link inset-delimiter>
+          <q-list-header>Essential Links</q-list-header>
+          <q-item @click.native="openURL('http://quasar-framework.org')">
+            <q-item-side icon="school" />
+            <q-item-main label="Docs" sublabel="quasar-framework.org"></q-item-main>
+          </q-item>
+          <q-item @click.native="openURL('https://discord.gg/5TDhbDg')">
+            <q-item-side icon="chat" />
+            <q-item-main label="Discord Chat Channel" sublabel="https://discord.gg/5TDhbDg"></q-item-main>
+          </q-item>
+          <q-item @click.native="openURL('http://forum.quasar-framework.org')">
+            <q-item-side icon="forum" />
+            <q-item-main label="Forum" sublabel="forum.quasar-framework.org"></q-item-main>
+          </q-item>
+          <q-item @click.native="openURL('https://twitter.com/quasarframework')">
+            <q-item-side icon="rss feed" />
+            <q-item-main label="Twitter" sublabel="@quasarframework"></q-item-main>
+          </q-item>
+        </q-list>
+      </q-list>
+    </q-layout-drawer>
+
+    <q-page-container>
+      <transition
+              enter-active-class="animated fadeIn"
+              leave-active-class="animated fadeOut"
+              mode="out-in"
+              :duration="300"
+              @leave="resetScroll"
+      >
+        <router-view />
+      </transition>
+      <!--<HelloWorld />-->
+    </q-page-container>
+  </q-layout>
 </template>
 
-<style lang="less">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+import { openURL } from 'quasar'
+import HelloWorld from './components/HelloWorld.vue'
+
+export default {
+  name: 'LayoutDefault',
+  components: {
+    HelloWorld
+  },
+  data () {
+    return {
+      leftDrawerOpen: this.$q.platform.is.desktop
     }
+  },
+  methods: {
+    openURL
   }
 }
+</script>
+
+<style>
 </style>

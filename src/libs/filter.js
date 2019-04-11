@@ -163,9 +163,9 @@ let filters = {
   },
   formatMoney (money) {
     if (money == 0) return '0'
-    money = money/100
+    money = money / 100
     money = (+money)
-    //money = money.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$&,');
+    // money = money.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, '$&,');
     return money.toString()
   },
   formatTwo (money) {
@@ -180,5 +180,5 @@ export default {
       Vue.filter(i, filters[i])
     }
   },
-  filters:filters
+  filters: filters
 }

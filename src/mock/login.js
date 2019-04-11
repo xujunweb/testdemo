@@ -18,7 +18,7 @@ const USER_MAP = {
 
 export const login = req => {
   req = JSON.parse(req.body)
-  return {token: USER_MAP[req.userName].token,name:USER_MAP[req.userName].name,avator:USER_MAP[req.userName].avator}
+  return { token: USER_MAP[req.userName].token, name: USER_MAP[req.userName].name, avator: USER_MAP[req.userName].avator }
 }
 export const logout = req => {
   return null
